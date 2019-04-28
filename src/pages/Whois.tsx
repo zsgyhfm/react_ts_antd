@@ -1,14 +1,17 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../componets/Header'
-class Whois extends React.Component{
-    render(){
-        return(
-            <Fragment>
-                <Header/>
-                <div>Whois</div>
-                <Link to="/">Whois转到home</Link>
-            </Fragment>
+import DocumentTitle from 'react-document-title'
+class Whois extends React.Component {
+    render() {
+        return (
+            <DocumentTitle title={"Whois查询"}>
+                <Fragment>
+                    <Header />
+                    <div>Whois</div>
+                    <Link to="/">Whois转到home</Link>
+                </Fragment>
+            </DocumentTitle>
         )
     }
 }

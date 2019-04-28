@@ -21,7 +21,7 @@ border-bottom: 1px #e3e3e3 solid;
         cursor:pointer;
     }
     .wechat:hover{
-        color:red;
+        color:#1890FF;
     }
     .header-search{
         height:120px;

@@ -1,16 +1,26 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import DocumentTitle from 'react-document-title'
 import Header from '../componets/Header'
+import {connect} from 'react-redux'
 class Home extends React.Component {
     render() {
         return (
-            <Fragment>
-                <Header/>
-                <div>Home</div>
-                <Link to="/whois">home转到whois</Link>
-            </Fragment>
+            <DocumentTitle title={"首页"}>
+                <Fragment>
+                    <Header />
+                    <div>Home</div>
+                    <Link to="/whois">home转到whois</Link>
+                </Fragment>
+
+            </DocumentTitle>
 
         )
     }
 }
-export default Home
+const stateToProps=(state:any)=>{
+    return{
+        login:state.Login
+    }
+}
+export default connect(stateToProps)(Home)
