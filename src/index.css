@@ -7,6 +7,7 @@ body{
   height:100%;
   background-color: #efeff4;
   position: relative;
+  min-width: 1300px;
 }
 div,li,p,ul,table,span,a{
   margin: 0;
@@ -30,4 +31,7 @@ visibility: hidden;
 width: 0;
 height: 0;
 clear: both;
+}
+.ant-table-thead > tr, .ant-table-tbody > tr{
+background-color: #fff;
 }

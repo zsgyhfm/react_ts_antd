@@ -6,9 +6,9 @@ const perConfig ={
     key:"root",
     storage:storage,
     whitelist:['Login']
-}
+};
 
-const perReducer = persistReducer(perConfig,RootReducer)
-const store = createStore(perReducer)
-const perStore = persistStore(store)
+const perReducer = persistReducer(perConfig,RootReducer);
+const store = createStore(perReducer);
+const perStore = persistStore(store);
 export {store,perStore}

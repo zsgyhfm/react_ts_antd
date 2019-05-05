@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Row, Col, Icon, Input, Button } from 'antd'
+import { Row, Col, Input, Button } from 'antd'
 import { Link } from "react-router-dom"
 const HeaderDiv = styled.div`
 
@@ -53,11 +53,25 @@ a:hover{
 const Search = Input.Search;
 
 class Header extends React.Component {
+    public state:any;
+    constructor(props:any){
+        super(props);
+        this.state={
+            username:""
+        }
+    }
+    componentWillMount(): void {
+        const user = localStorage.getItem("user");
+        this.setState({
+            username:user?user:""
+        });
+    }
+
     public render() {
         return (
             <HeaderDiv>
                 <Row style={{ borderBottom: "1px #e3e3e3 solid" }}>
-                    <Col className={"header-title clear"} span={16} offset={4}>
+                    <Col className={"header-title clear"}xxl={{span:16,offset:4}} lg={{span:24}}>
                         <div className={"float-left"}>
                             <span className={""}>酷米网专注服务于</span>
                             <a href="https://google.com">域名交易,</a>
@@ -67,15 +81,17 @@ class Header extends React.Component {
                             <a href="https://google.com">自媒体交易！</a>
                         </div>
                         <div className={"float-right"}>
-                            <span>您好,&emsp;</span>
-                            <a href="/user/login">登陆&emsp;</a>
-                            <a href="/user/signup">注册&emsp;</a>
-                            <span className={"wechat"}><Icon type="wechat" />微信公众号</span>
+                            <span>您好{this.state.username},&emsp;</span>
+
+                            <Link to={"/login"}>登陆&emsp;</Link>
+                            <Link to={"/regin"}>注册&emsp;</Link>
+
+                            {/*<span className={"wechat"}><Icon type="wechat" />微信公众号</span>*/}
                         </div>
                     </Col>
                 </Row>
                 <Row style={{ backgroundColor: "#f8f8f8" }}>
-                    <Col span={16} offset={4} className="header-search clear">
+                    <Col className="header-search clear"span={16} offset={4}>
                         <div className={"float-right"}>
                             <Button type={"primary"} style={{ height: "40px", marginTop: "30px" }}>发布交易</Button>
                         </div>
@@ -90,11 +106,11 @@ class Header extends React.Component {
                     </Col>
                 </Row>
                 <Row style={{ backgroundColor: "#1890FF", height: "45px", color: "#fff", lineHeight: "45px", fontSize: "16px" }}>
-                    <Col span={16} offset={4}>
+                    <Col xxl={{span:16,offset:4}} xl={{span:16,offset:4}}  md={{span:24}}>
                         <NavStyle>
                             <Link to="/">首页</Link>
-                            <Link to="http://google.com">域名代售</Link>
-                            <Link to="http://google.com">域名查墙</Link>
+                            <Link to="/trade">域名代售</Link>
+                            <Link to="/grw">域名查墙</Link>
                             <Link to="/Whois">whois查询</Link>
                             <Link to="http://google.com">域名污染查询</Link>
                             <Link to="http://google.com">行业资讯</Link>
